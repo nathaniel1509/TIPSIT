@@ -1,0 +1,110 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 13px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+
+.flip-card-front {
+  background-color: #B4C6DA;
+  color: black;
+}
+
+
+.flip-card-back {
+  background-color: #B4C6DA;
+  color: white;
+  transform: rotateY(180deg);
+}
+</style>
+</head>
+<body>
+
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <br>
+      
+      
+        
+
+      <img src="me.jpg" alt="Avatar" style="width:250px;height:260px;">
+    </div>
+    <div class="flip-card-back">
+      <h1> «Nat» </h1> 
+      <p> Residenza: None (TO)</p>
+      <p> Nato il: 02/04/2005 </p>
+      <p> Età: 16 anni </p>
+      <p> Classe: 3^B INFO </p>
+      <p> Scuola: J.C. Maxwell </p>
+      <p >Hobby: canto </p>
+    
+
+      <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.btn {
+  background-color: #8CACE5;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.btn:hover {opacity: 1}
+</style>
+</head>
+<body>
+
+
+<button class="btn"><a href="http://www.marcopalladino.it/it/">sito molto bello</a></button>
+
+</body>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

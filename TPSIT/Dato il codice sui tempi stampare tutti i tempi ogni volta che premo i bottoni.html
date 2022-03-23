@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <h2>codice test per i giochi basasti sui tempi</h2>
+
+    <p id="demo">
+      Questa pagina conta quanto tempo ci metti a premere il bottone
+    </p>
+    <button type="button" onclick="count()">Invia</button>
+    <p id="out"></p>
+    
+    <script>
+      let i = 0;
+      let start = Date.now();
+      function count() {
+        document.getElementById("out").innerHTML +=
+          "Done in " + (Date.now() - start) + " ms " + "<br>";
+      }
+    </script>
+  </body>
+</html>

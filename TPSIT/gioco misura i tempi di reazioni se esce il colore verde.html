@@ -1,0 +1,139 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #gameDiv {
+        height: 300px;
+        width: 300px;
+        border: 1px solid black;
+        background-color: white;
+        padding: 50px;
+        text-align: center;
+      }
+      .btn {
+        background: #3498db;
+        background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+        background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+        background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+        background-image: -o-linear-gradient(top, #3498db, #2980b9);
+        background-image: linear-gradient(to bottom, #3498db, #2980b9);
+        -webkit-border-radius: 16;
+        -moz-border-radius: 16;
+        border-radius: 16px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 60px;
+        padding: 10px 20px 10px 20px;
+        border: solid #000000 3px;
+        text-decoration: none;
+      }
+
+      .btn:hover {
+        background: #f70a0a;
+        background-image: -webkit-linear-gradient(top, #f70a0a, #f0080b);
+        background-image: -moz-linear-gradient(top, #f70a0a, #f0080b);
+        background-image: -ms-linear-gradient(top, #f70a0a, #f0080b);
+        background-image: -o-linear-gradient(top, #f70a0a, #f0080b);
+        background-image: linear-gradient(to bottom, #f70a0a, #f0080b);
+        text-decoration: none;
+      }
+      #scoreContainer {
+        border: 1px black solid;
+        background-color: white;
+        height: 150px;
+        width: 200px;
+        margin: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body onload="miointervallo">
+    <div id="gameDiv">
+      <button id="fire" class="btn" onclick="prendiilcolore()">Fire</button>
+      <div id="scoreContainer">
+        <p id="tentativi">1 tentativo</p>
+        <p id="click">time:0.0</p>
+        <p id="punteggio"></p>
+      </div>
+    </div>
+    <button onclick="playAgain()">Reset</button>
+    <button onclick="calcolaRecord()">Calcola il record</button>
+    <script>
+      let coloreArray = ["red", "green", "blue", "grey"];
+      let arraytempiclick = [];
+      let coloreprecendente = 0,
+        cont = 0,
+        casuale,
+        prendoiltempo;
+
+      const miointervallo = setInterval(cambiacolore, 1000);
+
+      function cambiacolore() {
+        if (cont < 10) {
+          do {
+            casuale = parseInt(Math.random() * 4);
+          } while (casuale == coloreprecendente);
+
+          document.getElementById("gameDiv").style.backgroundColor =
+            coloreArray[casuale];
+          coloreprecendente = casuale;
+          // prendo il tempo quando esce il verde
+          if (casuale == 1) {
+            prendoiltempo = Date.now();
+          }
+        }
+      }
+      function prendiilcolore() {
+        if (cont < 10) {
+          let tempoDifferenza;
+          tempoDifferenza = Date.now() - prendoiltempo;
+          document.getElementById("tentativi").innerText =
+            cont + 1 + " tentativo";
+          document.getElementById("click").innerText = tempoDifferenza;
+          if (casuale == 1) {
+            arraytempiclick.push(tempoDifferenza);
+          }
+          cont++;
+        }
+      }
+      function playAgain() {
+        let lunghezza = arraytempiclick.lenght;
+        if (cont == 10) {
+          cont = 0;
+          document.getElementById("punteggio").innerText = "";
+          for (let i = 0; i < lunghezza; i++) {
+            arraytempiclick.pop();
+            punteggio = 0;
+          }
+        }
+      }
+      function calcolaRecord() {
+        let somma = 0,
+          media;
+        punteggio;
+        if (cont == 10) {
+          for (let i = 0; i < 10; i++) {
+            if (arraytempiclick[i] == null) {
+              arraytempiclick[i] = 1500;
+            }
+            somma += arraytempiclick[i];
+          }
+          media = somma / 10;
+          if (media < 200) {
+            punteggio = media * 100;
+          } else if (media < 500) {
+            punteggio = media * 50;
+          } else if (media <= 1000) {
+            punteggio = media * 10;
+          } else {
+            punteggio = media;
+          }
+          document.getElementById("punteggio").innerText = punteggio;
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<body>
+
+<h1> MAGGIORE</h1>
+<form id="frm1" >
+ Primo numero: <input type="text" name="PrimoNumero" value="0"><br>
+ Secondo numero: <input type="text" name="SecondoNumero" value="0"><br>
+  Terzo numero: <input type="text" name="TerzoNumero" value="0"><br><br>
+</form>
+
+<p>Calcola il massimo</p>
+<button onclick="myFunction()">Calcola</button>
+<br>
+  
+Il numero maggiore è:
+<p id="demo"></p>
+<script>
+function myFunction() {
+
+var x = document.getElementById("frm1");
+
+var primo=x.elements[0].value;  
+
+var secondo=x.elements[1].value;
+
+var terzo=x.elements[2].value;
+
+  
+document.getElementById("demo").innerHTML = Max(primo,secondo,terzo);
+}
+
+function Max(h1, h2, h3){
+  var max = h1;
+  
+  if(h2 > max){
+    max = h2;
+  }
+  if(h3 > max){
+    max = h3;
+  }
+   return max;
+}
+
+</script>
+
+</body>
+</html>
