@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+</head>
+<body>
+<style>
+  #colore{
+    height: 100px;
+    width: 100px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 20px;
+  }
+</style>
+<div id="colore"></div>
+<button onclick="tempo()">clicca</button>
+<p id="out"></p>
+  
+<script>
+  
+let mioarraytempi=[];
+
+let tempoiniziale=Date.now();
+
+function tempo() {
+  let tempodalclick=Date.now()-tempoiniziale;
+  mioarraytempi.push(tempodalclick);
+  stampaArray();
+  if(tempodalclick < 2000){
+    document.getElementById("colore").style.backgroundColor="red";
+  }else{
+    document.getElementById("colore").style.backgroundColor="green";
+  }
+}
+function stampaArray() {
+  document.getElementById("out").innerHTML=mioarraytempi.toString();
+}
+
+</script>

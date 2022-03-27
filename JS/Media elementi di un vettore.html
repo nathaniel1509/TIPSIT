@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        let arrayn= [], num = 100, indice;
+        function riempiArray() {
+            for (let i = 0; i < num; i++) {
+                arrayn[i] = parseInt(Math.random() * 1000);
+                document.getElementById("out").innerHTML += arrayn[i] + " ";
+            }
+        }
+        function max() {
+            let massimo = -1;
+            for (let i = 0; i < arrayn.length; i++) {
+                if (arrayn[i] > massimo) {
+                    massimo = arrayn[i];
+                    indice = i;
+                }
+            }
+            document.getElementById("outMassimo").innerHTML += massimo + " - " + indice + " ";
+        }
+        function min() {
+            let minimo = 1001;
+            for (let i = 0; i < arrayn.length; i++) {
+                if (arrayn[i] < minimo) {
+                    minimo = arrayn[i];
+                    indice = i;
+                }
+            }
+            document.getElementById("outMinimo").innerHTML += minimo + " - " + indice + " ";
+        }
+        function media() {
+            let somma = 0;
+            let media;
+            for (let i = 0; i < arrayn.length; i++) {
+                somma += arrayn[i];
+            }
+            media = somma / arrayn.length;
+            document.getElementById("outMedia").innerHTML += media + " ";
+        }
+        function maxCinquanta() {
+            let massimo = -1;
+            for (let i = 0; i < 50; i++) {
+                if (arrayn[i] > massimo) {
+                    massimo = arrayn[i];
+                    indice = i;
+                }
+            }
+            document.getElementById("outMassimo50").innerHTML += massimo + " - " + indice + " ";
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="riempiArray()">
+        Carica array
+    </button>
+    <button onclick="max()">
+        massimo
+    </button>
+    <button onclick="min()">
+        minimo
+    </button>
+    <button onclick="media()">
+        media
+    </button>
+    <button onclick="maxCinquanta()">
+        numero massimo 50
+    </button>
+    <p id="out">numeri: </p>
+    <p id="outMassimo">massimo e posizione: </p>
+    <p id="outMinimo">minimo e posizione: </p>
+    <p id="outMedia">media: </p>
+    <p id="outMassimo50">massimo fino ai 50 e posizione: </p>
+</body>
+
+</html>

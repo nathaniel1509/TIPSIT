@@ -1,0 +1,31 @@
+<html>
+
+<head>
+</head>
+<style>
+    div{
+        height: 200px;
+        width: 200px;
+        border-width: 2px 2px 2px 2px;
+        border-style: solid;
+        border-color: black;
+    }
+</style>
+<script>
+    function color() {
+        setInterval(function() {
+            var r = Math.round(Math.random() * 256);
+            var g = Math.round(Math.random() * 256);
+            var b = Math.round(Math.random() * 256);
+            document.getElementById("out").style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+        }, 500);
+    }
+</script>
+
+<body onLoad="color()">
+    <div id="out">
+
+    </div>
+</body>
+
+</html>
