@@ -1,0 +1,48 @@
+<html>
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <script>
+    
+let n, cont=0;
+function uno(){
+  for(let i=2; i<100; i++){
+    isPrime(i);
+  }
+  document.getElementById("cout").innerHTML += "<br>" + "i numeri primi sono: " + cont;
+  
+}
+
+function isPrime(n){
+  let trov=false;
+
+  for(let i=2; i<n/2+1 && !trov; i++){
+    if(n%i==0){
+      trov=true;
+      
+    }
+  }
+  if(!trov){
+    cont++;
+    document.getElementById("cout").innerHTML += n + ' ';
+    
+  }  
+}
+    
+  </script>
+  
+</head>
+
+<body>
+  <p id="cout"></p>
+  
+    <button onclick="uno()">
+        start
+    </button>
+</body>
+</html>
