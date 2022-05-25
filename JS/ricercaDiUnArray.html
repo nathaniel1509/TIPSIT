@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+  <label for="input">Dammi un numero</label>
+  <input id="input" type="text">
+  <br>
+  <button onclick="cerca();">Cerca il numero nel vettore</button>
+  
+<script>
+  /*
+  Dato un array di numeri primi (100 elementi) dato in input un numero
+  1) dire se questo è presente nell'array altrimenti stampare NON TROVATO
+  2) se presente stampare il numero primo successivo e precedente
+  3) stampare il prodotto del numero cercato con il numero primo successivo
+  4) stampare il risultato della divisione del numero cercato con il numero precedente
+  */
+
+  let vet = [], num;  
+    for(let i=1; i<=100; i++){
+      if (uno(i)){
+       // document.write("<br>" + i + " ");
+        vet.push(i);
+      }
+    }
+
+  function uno(n){
+    let trov = true;
+    for(let i=2; i<=n/2; i++){
+      if (n%i == 0) {
+        trov = false;
+        i = n / 2;
+      }
+    }
+    return trov;
+  }
+
+  function cerca(){
+    let trov = false;
+    let num, i;
+    num = parseInt(document.getElementById("input").value);
+    for(i=0; i<vet.length && !trov; i++){
+      if(num == vet[i]){
+        trov = true;
+      }
+    }
+    if(trov){
+      document.write("TROVATO" + "<br>");
+      PreSuc(i);
+    }else{
+      document.write("NON TROVATO");
+    }
+  }
+
+  function PreSuc(i){
+    document.write("Numero successivo: " + vet[i] + "<br>" + "Numero precedente: " + vet[i-2]);
+    prodottoEdivisione(i);
+  }
+
+  function prodottoEdivisione(i){
+    let prod, div;
+    prod = vet[i-1] * vet[i]; 
+    div = vet[i-1] / vet[i-2];
+    document.write("<br>" + "Prodotto del numero dato per quello successivo: " + prod + "<br>");
+    document.write("Divisione del numero dato per quello precedente: " + div);
+  }
+</script>
+</head>
+
+<body>
+</body>
+
+</html>
